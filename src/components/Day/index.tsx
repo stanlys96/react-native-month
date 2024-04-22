@@ -164,7 +164,7 @@ const Day = React.memo<Props>(
     );
 
     const renderDot = useCallback(
-      (d: DayDot, i) => {
+      (d: DayDot, i: number) => {
         return (
           <Dot
             key={i.toString()}
