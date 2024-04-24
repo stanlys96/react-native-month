@@ -207,6 +207,8 @@ const Day = React.memo<Props>(
           isVisible={isVisible}
           isWeekend={isWeekend}
           isToday={isToday}
+          isSunday={isSunday}
+          isSaturday={isSaturday}
         />
       );
     }
