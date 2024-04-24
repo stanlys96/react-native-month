@@ -44,6 +44,8 @@ interface NonTouchableDayProps {
   isToday: boolean;
   theme: ThemeType;
   dayTheme?: DayTheme;
+  isSunday: boolean;
+  isSaturday: boolean;
 }
 
 const NonTouchableDay = React.memo<NonTouchableDayProps>(
@@ -59,6 +61,8 @@ const NonTouchableDay = React.memo<NonTouchableDayProps>(
       date,
       isWeekend,
       isToday,
+      isSunday,
+      isSaturday
     } = props;
 
     return (
@@ -71,6 +75,8 @@ const NonTouchableDay = React.memo<NonTouchableDayProps>(
           dayTheme?.nonTouchableDayContainerStyle,
           isWeekend ? theme.weekendContainerStyle : {},
           isWeekend ? dayTheme?.weekendContainerStyle : {},
+          isSaturday ? theme.saturdayContainerStyle : {},
+          isSunday ? theme.sundayContainerStyle : {},
           isToday && !isActive ? theme.todayContainerStyle : {},
           isToday && !isActive ? dayTheme?.todayContainerStyle : {},
           isActive ? styles.activeDate : {},
@@ -93,6 +99,8 @@ const NonTouchableDay = React.memo<NonTouchableDayProps>(
             dayTheme?.dayContentStyle,
             isWeekend ? theme.weekendContentStyle : {},
             isWeekend ? dayTheme?.weekendContentStyle : {},
+            isSaturday ? theme.saturdayContentStyle : {},
+            isSunday ? theme.sundayContentStyle : {},
             isActive ? theme.activeDayContentStyle : {},
             isActive ? dayTheme?.activeDayContentStyle : {},
           ]}
@@ -104,6 +112,8 @@ const NonTouchableDay = React.memo<NonTouchableDayProps>(
               dayTheme?.nonTouchableDayTextStyle,
               isWeekend ? theme.weekendTextStyle : {},
               isWeekend ? dayTheme?.weekendTextStyle : {},
+              isSaturday ? theme.saturdayTextStyle : {},
+              isSunday ? theme.sundayTextStyle : {},
               isMonthDate ? theme.nonTouchableLastMonthDayTextStyle : {},
               isMonthDate ? dayTheme?.nonTouchableLastMonthDayTextStyle : {},
               isToday ? theme.todayTextStyle : {},
@@ -117,7 +127,7 @@ const NonTouchableDay = React.memo<NonTouchableDayProps>(
       </View>
     );
   },
-  (prevProps, nextProps) => {
+  (prevProps: any, nextProps: any) => {
     return (
       prevProps.isActive === nextProps.isActive &&
       prevProps.isVisible === nextProps.isVisible &&
@@ -150,6 +160,8 @@ const Day = React.memo<Props>(
         isToday,
         isWeekend,
         isHidden,
+        isSaturday,
+        isSunday
       },
       dots = [],
       dayTheme,
@@ -211,6 +223,8 @@ const Day = React.memo<Props>(
           dayTheme?.dayContainerStyle,
           isWeekend ? theme.weekendContainerStyle : {},
           isWeekend ? dayTheme?.weekendContainerStyle : {},
+          isSaturday ? theme.saturdayContainerStyle : {},
+          isSunday ? theme.sundayContainerStyle : {},
           isToday && !isActive ? theme.todayContainerStyle : {},
           dayTheme && !isActive ? dayTheme.todayContainerStyle : {},
           isActive ? styles.activeDate : {},
@@ -234,7 +248,9 @@ const Day = React.memo<Props>(
               theme.dayContentStyle,
               dayTheme ? dayTheme.dayContentStyle : {},
               isWeekend ? theme.weekendContentStyle : {},
-              isWeekend ? dayTheme?.weekendContentStyle : {},
+                isWeekend ? dayTheme?.weekendContentStyle : {},
+                isSaturday ? theme.saturdayContentStyle : {},
+                isSunday ? theme.sundayContentStyle : {},
               isActive ? theme.activeDayContentStyle : {},
               isActive ? dayTheme?.activeDayContentStyle : {},
             ]}
@@ -248,7 +264,9 @@ const Day = React.memo<Props>(
                 isToday ? theme.todayTextStyle : {},
                 isToday ? dayTheme?.todayTextStyle : {},
                 isActive ? theme.activeDayTextStyle : {},
-                isActive ? dayTheme?.activeDayTextStyle : {},
+                  isActive ? dayTheme?.activeDayTextStyle : {},
+                  isSaturday ? theme.saturdayTextStyle : {},
+                  isSunday ? theme.sundayTextStyle : {},
               ]}
             >
               {getDayFromDateString(date)}
@@ -259,7 +277,7 @@ const Day = React.memo<Props>(
       </TouchableOpacity>
     );
   },
-  (prevProps, nextProps) => {
+  (prevProps: any, nextProps: any) => {
     return (
       prevProps.onPress === nextProps.onPress &&
       prevProps.item.isActive === nextProps.item.isActive &&

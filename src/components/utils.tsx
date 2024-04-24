@@ -78,6 +78,8 @@ export function getMonthDays(
     const today = new Date();
     const dow = date.getDay();
     const isWeekend = dow === SATURDAY || dow === SUNDAY;
+    const isSunday = dow === SUNDAY;
+    const isSaturday = dow === SATURDAY;
     const isToday =
       day === today.getDate() &&
       localMonth === today.getMonth() &&
@@ -97,6 +99,8 @@ export function getMonthDays(
       isVisible:
         isOnSelectableRange && isMonthDate && !disabledDays[dateString],
       isHidden: disableOffsetDays && !isMonthDate,
+      isSunday,
+      isSaturday
     });
   }
 

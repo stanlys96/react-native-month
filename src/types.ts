@@ -29,6 +29,12 @@ export interface DayTheme {
   weekendTextStyle?: TextStyle;
   todayContainerStyle?: ViewStyle;
   todayTextStyle?: TextStyle;
+  saturdayContainerStyle?: ViewStyle;
+  saturdayContentStyle?: ViewStyle;
+  saturdayTextStyle?: TextStyle;
+  sundayContainerStyle?: ViewStyle;
+  sundayContentStyle?: ViewStyle;
+  sundayTextStyle?: TextStyle;
 }
 
 export interface DotTheme {
@@ -70,6 +76,8 @@ export type DayType = {
   isToday: boolean;
   isWeekend: boolean;
   isVisible: boolean;
+  isSaturday: boolean;
+  isSunday: boolean;
 };
 
 type MarkedDay = {
